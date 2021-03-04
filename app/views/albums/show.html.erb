@@ -1,0 +1,45 @@
+<html>
+    <body>
+        <h1><%=@album.name%></h1>
+        <img src=<%=@album.img%>><br>
+        <nav>
+            <ul>
+                <li><%= link_to("Edit #{@album.name}", edit_artist_album_path(@artist, @album))%></li>
+            </ul>
+        </nav>
+        <h2>Songs</h2>
+        <nav>
+            <ul>
+                <li><%= link_to("Add a Song", new_artist_album_song_path(@artist, @album))%></li>
+            </ul>
+        </nav>
+        <ul>
+            <% @album.songs.each do |s| %>
+                <li><h3><%= s.name %></h3></li>
+                <nav>
+                    <ul>
+                        <li><%= link_to("Show me more about #{s.name}", artist_album_song_path(@artist, @album, s))%></li>
+                    </ul>
+                </nav><br><br>
+            <% end %>
+        </ul>
+        <h2>Reviews</h2>
+        <nav>
+            <ul>
+                <li><%= link_to( "Leave a Review for #{@album.name}", new_artist_album_review_path(@artist, @album))%></li>
+            </ul>
+        </nav>
+        <ul>
+            <% @album.reviews.each do |r| %>
+                <li><%= r.description %></li>
+                <% if r.user_id == session[:user_id]%>
+                    <nav>
+                        <ul>
+                            <li><%= link_to( "Edit Review", edit_artist_album_review_path(@artist, @album, r))%></li>
+                        </ul>
+                    </nav>
+                <% end %>
+            <% end %>
+        </ul>
+    </body>
+</html>

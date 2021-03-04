@@ -1,0 +1,47 @@
+<html>
+    <body>
+        <h1><%=@artist.name%></h1>
+        <img src=<%=@artist.img%>><br>
+        <h3><%=@artist.bio%></h3>
+        <nav>
+            <ul>
+                <li><%= link_to("Edit #{@artist.name}", edit_artist_path(@artist.id))%></li>
+            </ul>
+        </nav>
+        <h2>Albums</h2>
+        <nav>
+            <ul>
+                <li><%= link_to("Add an Album", new_artist_album_path(@artist.id))%></li>
+            </ul>
+        </nav>
+        <ul>
+            <% @artist.albums.each do |a| %>
+                <li><h3><%= a.name %></h3></li>
+                <li><img src=<%=a.img%>></li>
+                <nav>
+                    <ul>
+                        <li><%= link_to("Show me more about #{a.name}", artist_album_path(@artist.id, a.id))%></li>
+                    </ul>
+                </nav><br><br>
+            <% end %>
+        </ul>
+        <h2>Reviews</h2>
+        <nav>
+            <ul>
+                <li><%= link_to( "Leave a Review for #{@artist.name}", new_artist_review_path(@artist))%></li>
+            </ul>
+        </nav>
+        <ul>
+            <% @artist.reviews.each do |r| %>
+                <li><%= r.description %></li>
+                <% if r.user_id == session[:user_id]%>
+                    <nav>
+                        <ul>
+                            <li><%= link_to( "Edit Review", edit_artist_review_path(@artist, r))%></li>
+                        </ul>
+                    </nav>
+                <% end %>
+            <% end %>
+        </ul>
+    </body>
+</html>

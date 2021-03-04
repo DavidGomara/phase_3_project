@@ -1,0 +1,22 @@
+<h1>Login</h1>
+
+
+<%if @error %>
+  <h1> <%= @error %> </h1>
+<%end %>
+
+<%= form_tag('/login', method: :post) do %>
+  <div>
+    <%= label_tag(:email, "Email") %>
+    <%= text_field_tag :email %>
+  </div>
+  <div>
+    <%= label_tag(:username, "Username") %>
+    <%= text_field_tag :username %>
+  </div>
+  <div>
+   <%= label_tag(:password, "Password") %>
+    <%= password_field_tag :password %>
+  </div>
+  <%= submit_tag("Login") %>
+<% end %>

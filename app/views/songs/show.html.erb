@@ -1,0 +1,30 @@
+<html> 
+    <body>
+        <h1><%= @song.name%></h1>
+        <% if @genre %>
+            <h3><%= @genre.name%></h3>
+        <%end%>
+        <%if @avg != nil%>
+            <h3>Average Rating</h3><br>
+            <%= @avg%>
+        <% end %>
+        <h2>Song Reviews</h2>
+        <nav>
+            <ul>
+                <li><%= link_to( "Leave a Review for #{@song.name}", new_artist_album_song_review_path(@artist, @album, @song))%></li>
+            </ul>
+        </nav>
+        <ul>
+            <% @song.reviews.each do |r| %>
+                <li><%= r.description %></li>
+                <% if r.user_id == session[:user_id]%>
+                    <nav>
+                        <ul>
+                            <li><%= link_to( "Edit Review", edit_artist_album_song_review_path(@artist, @album, @song, r))%></li>
+                        </ul>
+                    </nav>
+                <% end %>
+            <% end %>
+        </ul>
+    </body>
+</html>

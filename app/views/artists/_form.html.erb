@@ -1,0 +1,16 @@
+<%= form_for @artist do |a| %>
+  <div>
+    <%= a.label :name %>
+    <%= a.text_field :name%>
+  </div>
+  <div>
+    <%= a.label :bio %>
+    <%= a.text_area :bio %>
+  </div>
+  <div>
+    <%= a.label :img %>
+    <%= a.text_field :img%>
+  </div>
+
+    <%= a.submit  %>
+<% end %>

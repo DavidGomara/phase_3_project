@@ -1,0 +1,12 @@
+<%= form_for review, url:url do |s| %>
+  <div>
+    <%= s.label :description %>
+    <%= s.text_field :description%>
+  </div>
+  <div>
+    <%= s.label :rating, "Rating between 1 and 5" %>
+    <%= s.text_field :rating%>
+  </div>
+
+    <%= s.submit  %>
+<% end %>

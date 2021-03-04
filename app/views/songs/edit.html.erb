@@ -1,0 +1,7 @@
+<html>
+    <body>
+        <h1>Edit <%= @song.name%></h1>
+
+        <%= render partial: 'form', locals: {artist: @artist, album: @album, song: @song, url: artist_album_song_path(@artist, @album, @song)}%>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+<html>
+    <body>
+        <h1>Create An Review for <%= @instance.name %></h1>
+
+        <%= render partial: 'form', locals: {url: @path, review: @review}%>
+    </body>
+</html>

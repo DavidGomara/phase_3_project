@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <h1>Musicians Database</h1>
+        <nav>
+            <ul>
+                <li><%= link_to("Add an Artist", new_artist_path)%></li>
+            </ul>
+        </nav>
+        <% @artists.each do |a|%>
+            <ul>
+                <li><h1><%= a.name%></h1></li>
+                <li><img src=<%=a.img%>></li>
+            </ul>
+            <nav>
+                <ul>
+                    <li><%= link_to("Show me more about #{a.name}", artist_path(a))%></li>
+                    <li><%= link_to("Edit #{a.name}", edit_artist_path(a))%></li>
+                    <li><%= link_to("Leave a Review", new_artist_review_path(a))%></li>
+                </ul>
+            </nav>
+        <%end%>
+    </body>
+</html>

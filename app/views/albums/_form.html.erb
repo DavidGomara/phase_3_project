@@ -1,0 +1,12 @@
+<%= form_for album, url:url do |a| %>
+  <div>
+    <%= a.label :name %>
+    <%= a.text_field :name%>
+  </div>
+  <div>
+    <%= a.label :img %>
+    <%= a.text_field :img%>
+  </div>
+
+    <%= a.submit  %>
+<% end %>

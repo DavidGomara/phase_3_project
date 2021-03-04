@@ -1,0 +1,7 @@
+<html>
+    <body>
+        <h1>Edit <%= @album.name%></h1>
+
+        <%= render partial: 'form', locals: {artist: @artist, album: @album, url:artist_album_path(@artist, @album)}%>
+    </body>
+</html>

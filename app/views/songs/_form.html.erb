@@ -1,0 +1,12 @@
+<%= form_for song, url:url do |s| %>
+  <div>
+    <%= s.label :name %>
+    <%= s.text_field :name%>
+  </div>
+  <div>
+    <%= s.label :genre %>
+    <%=s.collection_select :genre_id, Genre.all, :id, :name%> 
+  </div>
+
+    <%= s.submit  %>
+<% end %>
